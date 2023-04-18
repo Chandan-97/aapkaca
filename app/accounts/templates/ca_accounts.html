@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mt-4">
+    <div class="mb-4">
+        <h3 class="text-center">Login</h3>
+        <form action="{% url 'accounts__ca' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="login_email" class="form-label">Email address</label>
+                <input name="login_email" type="email" class="form-control" id="login_email"
+                    aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="login_password" class="form-label">Password</label>
+                <input name="login_password" type="password" class="form-control" id="login_password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
+    <hr class="border border-primary border-3">
+    <div class="mb-4">
+        <h3 class="text-center">Register</h3>
+        <form>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" name="full_name" class="form-control" id="fullNameRegisterInput"
+                    aria-describedby="fullName">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Phone number</label>
+                <input type="text" name="mobile" class="form-control" id="exampleInputPhone"
+                    aria-describedby="phoneHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Membership Number</label>
+                <input type="text" name="membership_no" class="form-control" id="exampleInputPhone"
+                    aria-describedby="phoneHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Location</label>
+                <input type="text" name="location" class="form-control" id="exampleInputPhone"
+                    aria-describedby="phoneHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="businessNeed" class="form-label">Office Address</label>
+                <textarea class="form-control" name="office_address" id="businessNeed" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="caLocationPreference" class="form-label">Years of experience</label>
+                <input type="text" name="yoe" class="form-control" id="caLocationPreference">
+            </div>
+
+            <div class="mb-3">
+                <label for="caLocationPreference" class="form-label">Degrees</label>
+                <input type="text" name="degree" class="form-control" id="caLocationPreference">
+            </div>
+
+            <div class="mb-3">
+                <label for="businessNeed" class="form-label">Profile Summary</label>
+                <textarea class="form-control" name="profile_summary" id="businessNeed" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="userLocationPreference" class="form-label">CA Passed Year</label>
+                <input type="text" name="ca_passed_year" class="form-control" id="userLocationPreference">
+            </div>
+
+            <div class="mb-3">
+                <label for="userLocationPreference" class="form-label">Past companies</label>
+                <input type="text" name="past_companies" class="form-control" id="userLocationPreference">
+            </div>
+
+            <div class="mb-3">
+                <label for="userLocationPreference" class="form-label">Awards / Certificates</label>
+                <input type="text" name="awards_certificates" class="form-control" id="userLocationPreference">
+            </div>
+
+            <div class="mb-3">
+                <label for="userLocationPreference" class="form-label">Working day start and end time</label>
+                <input type="text" name="working_day_start_end" class="form-control" id="userLocationPreference">
+            </div>
+
+            <div class="mb-3">
+                <label for="userInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password_1" class="form-control" id="userInputPassword1">
+            </div>
+
+            <div class="mb-3">
+                <label for="userInputPassword2" class="form-label">Repeat Password</label>
+                <input type="password" name="password_2" class="form-control" id="userInputPassword2">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
