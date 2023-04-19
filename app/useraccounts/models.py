@@ -32,14 +32,14 @@ class User(AbstractUser):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, models.CASCADE, related_name='user_profile')
     business_need = models.TextField(max_length=256, null=True, blank=True)
-    location_pref = MultiSelectField(choices=LOCATIONS, max_choices=3, max_length=64)
-    location = models.CharField(choices=LOCATIONS, max_length=16)
+    location_pref = MultiSelectField(choices=LOCATIONS, max_choices=3, max_length=64, null=True, blank=True)
+    location = models.CharField(choices=LOCATIONS, max_length=16, null=True, blank=True)
 
 
 class CAProfile(models.Model):
     user = models.OneToOneField(User, models.CASCADE, related_name='ca_profile')
     location = models.CharField(choices=LOCATIONS, max_length=16)
-    office_address = models.CharField(max_length=128)
+    office_address = models.CharField(max_length=128, null=True, blank=True)
     years_of_experience = models.IntegerField()
     degrees = MultiSelectField(choices=DEGREE, max_choices=5, max_length=128)
     summary = models.CharField(max_length=256)
