@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from .models import CaService, CaServicesPrice
+from .models import CaService
 from django.http import JsonResponse
 
 
@@ -11,9 +10,9 @@ def list_caservices(request):
 	return JsonResponse(services)
 
 
-def list_caservicesprice(request):
-	ca = request.user
-	services_prices = list(CaServicesPrice.objects.filter(ca=request.user))
-	return JsonResponse(services_prices)
+# def list_caservicesprice(request):
+# 	ca = request.user
+# 	services_prices = list(CaServicesPrice.objects.filter(ca=request.user))
+# 	return JsonResponse(services_prices)
 
 
