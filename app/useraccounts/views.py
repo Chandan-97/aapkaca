@@ -3,7 +3,7 @@ import json
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import User, UserProfile, CAProfile
+from .models import User, UserProfile, CAProfile, LOCATIONS, DEGREE
 
 
 # Create your views here.
@@ -105,8 +105,9 @@ def register_ca(request):
     passout_year = data.get('passout_year')
     password = data.get('password1')
 
-    if None in [full_name, phone_no, email, password]:
-        return HttpResponse("full name, phone no, email and password mandatory")
+    if None in [full_name, phone_no, email, password, location, years_of_experience, degrees, summary, passout_year]:
+        return HttpResponse("full name, phone no, email, password, location, years_of_experience, degrees, "
+                            "summary and passout_year mandatory")
 
     if password and password != data.get('password2'):
         return HttpResponse('password mismatch')
