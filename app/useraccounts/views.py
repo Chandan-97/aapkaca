@@ -50,7 +50,7 @@ def login_ca(request):
     if user is None:
         return HttpResponse("Invalid email or password")
 
-    if not user.ca:
+    if not user.is_ca:
         return HttpResponse("Is not a CA")
     login(request, user)
     return HttpResponse("Logged In")
@@ -113,7 +113,7 @@ def register_ca(request):
         return HttpResponse('password mismatch')
 
     user = User.objects.create_user(username=email, email=email, password=password, phone_no=phone_no,
-                                    full_name=full_name, is_user=True)
+                                    full_name=full_name, is_ca=True)
 
     ca_profile = CAProfile(user=user, location=location, office_address=office_address, years_of_experience=years_of_experience, degrees=degrees, summary=summary, passout_year=passout_year)
     ca_profile.save()
