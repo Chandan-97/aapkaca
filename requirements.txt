@@ -1,6 +1,7 @@
 asgiref==3.6.0
 autopep8==2.0.2
 Django==3.2.18
+django-cors-headers==3.14.0
 django-multiselectfield==0.1.12
 djangorestframework==3.14.0
 dnspython==2.3.0
