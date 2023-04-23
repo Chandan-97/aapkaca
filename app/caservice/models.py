@@ -1,4 +1,5 @@
 from django.db import models
+from useraccounts.models import User
 
 
 # Create your models here.
@@ -8,12 +9,12 @@ class CaService(models.Model):
     description = models.TextField(max_length=500)
 
 
-# class CaServicesPrice(models.Model):
-#     service = models.ForeignKey(CaService, on_delete=models.CASCADE)
-#     ca = models.ForeignKey(UserCa, on_delete=models.CASCADE)
-#     price = models.IntegerField()
-#     description = models.TextField(max_length=120)
-#
-#     class Meta:
-#         unique_together = ["service", "ca"]
-#         index_together = ["service", "ca"]
+class CaServicesPrice(models.Model):
+    service = models.ForeignKey(CaService, on_delete=models.CASCADE)
+    ca = models.ForeignKey(User, on_delete=models.CASCADE)
+    price = models.IntegerField()
+    description = models.TextField(max_length=120)
+
+    class Meta:
+        unique_together = ["service", "ca"]
+        index_together = ["service", "ca"]
