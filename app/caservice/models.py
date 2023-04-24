@@ -1,12 +1,17 @@
 from django.db import models
 from useraccounts.models import User
+import jsonfield
 
 
 # Create your models here.
 
 class CaService(models.Model):
     title = models.CharField(max_length=30)
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=500, null=True, blank=True)
+    features = jsonfield.JSONField()
+
+    def __str__(self):
+        return self.title
 
 
 class CaServicesPrice(models.Model):
@@ -18,3 +23,6 @@ class CaServicesPrice(models.Model):
     class Meta:
         unique_together = ["service", "ca"]
         index_together = ["service", "ca"]
+
+    def __str__(self):
+        return self.service__id + " -- " + self.ca__id
