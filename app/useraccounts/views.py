@@ -1,8 +1,10 @@
 import json
 
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
+
 from .models import User, UserProfile, CAProfile, LOCATIONS, DEGREE
 
 
@@ -16,23 +18,23 @@ def login_user(request):
     password = data.get("password")
 
     if None in [email, password]:
-        return HttpResponse("email or password empty")
+        return HttpResponse("email or password empty", status=status.HTTP_400_BAD_REQUEST)
 
     user = authenticate(username=email, password=password)
 
     if user is None:
-        return HttpResponse("Invalid email or password")
+        return HttpResponse("Invalid email or password", status=status.HTTP_400_BAD_REQUEST)
 
     if not user.is_user:
-        return HttpResponse("Is not a user")
+        return HttpResponse("Is not a user", status=status.HTTP_400_BAD_REQUEST)
     login(request, user)
-    return HttpResponse("Logged In")
+    return HttpResponse("Logged In", status=status.HTTP_200_OK)
 
 
 @csrf_exempt
 def logout_user(request):
     logout(request)
-    return HttpResponse("Logged Out")
+    return HttpResponse("Logged Out", status=status.HTTP_200_OK)
 
 
 @csrf_exempt
@@ -43,23 +45,23 @@ def login_ca(request):
     password = data.get("password")
 
     if None in [email, password]:
-        return HttpResponse("email or password empty")
+        return HttpResponse("email or password empty", status=status.HTTP_400_BAD_REQUEST)
 
     user = authenticate(username=email, password=password)
 
     if user is None:
-        return HttpResponse("Invalid email or password")
+        return HttpResponse("Invalid email or password", status=status.HTTP_400_BAD_REQUEST)
 
     if not user.is_ca:
-        return HttpResponse("Is not a CA")
+        return HttpResponse("Is not a CA", status=status.HTTP_400_BAD_REQUEST)
     login(request, user)
-    return HttpResponse("Logged In")
+    return HttpResponse("Logged In", status=status.HTTP_200_OK)
 
 
 @csrf_exempt
 def logout_ca(request):
     logout(request)
-    return HttpResponse("Logged Out")
+    return HttpResponse("Logged Out", status=status.HTTP_200_OK)
 
 
 @csrf_exempt
@@ -76,17 +78,17 @@ def register_user(request):
     password = data.get('password1')
 
     if None in [full_name, phone_no, email, password]:
-        return HttpResponse("full name, phone no, email and password mandatory")
+        return HttpResponse("full name, phone no, email and password mandatory", status=status.HTTP_400_BAD_REQUEST)
 
     if password and password != data.get('password2'):
-        return HttpResponse('password mismatch')
+        return HttpResponse('password mismatch', status=status.HTTP_400_BAD_REQUEST)
 
     user = User.objects.create_user(username=email, email=email, password=password, phone_no=phone_no,
                                     full_name=full_name, is_user=True)
 
     user_profile = UserProfile(user=user, business_need=business_need, location_pref=location_pref, location=location)
     user_profile.save()
-    return HttpResponse("User created")
+    return HttpResponse("User created", status=status.HTTP_200_OK)
 
 
 @csrf_exempt
@@ -107,10 +109,10 @@ def register_ca(request):
 
     if None in [full_name, phone_no, email, password, location, years_of_experience, degrees, summary, passout_year]:
         return HttpResponse("full name, phone no, email, password, location, years_of_experience, degrees, "
-                            "summary and passout_year mandatory")
+                            "summary and passout_year mandatory", status=status.HTTP_400_BAD_REQUEST)
 
     if password and password != data.get('password2'):
-        return HttpResponse('password mismatch')
+        return HttpResponse('password mismatch', status=status.HTTP_400_BAD_REQUEST)
 
     user = User.objects.create_user(username=email, email=email, password=password, phone_no=phone_no,
                                     full_name=full_name, is_ca=True)
