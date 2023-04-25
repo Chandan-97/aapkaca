@@ -12,14 +12,14 @@ from django.views.decorators.csrf import csrf_exempt
 def list_caservices(request):
 	services = CaService.objects.all()
 	services = list(services.values())
-	return JsonResponse(services)
+	return JsonResponse(services, safe=False)
 
 
 @csrf_exempt
 def list_caservicesprice(request):
 	ca = request.user
 	services_prices = list(CaServicesPrice.objects.filter(ca=request.user))
-	return JsonResponse(services_prices)
+	return JsonResponse(services_prices, safe=False)
 
 
 @csrf_exempt
