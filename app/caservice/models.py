@@ -25,4 +25,4 @@ class CaServicesPrice(models.Model):
         index_together = ["service", "ca"]
 
     def __str__(self):
-        return self.service__id + " -- " + self.ca__id
+        return str(self.service.title) + " -- " + str(self.ca.full_name)

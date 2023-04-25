@@ -17,8 +17,8 @@ def list_caservices(request):
 
 @csrf_exempt
 def list_caservicesprice(request):
-	ca = request.user
-	services_prices = list(CaServicesPrice.objects.filter(ca=request.user))
+	# ca = request.user
+	services_prices = list(CaServicesPrice.objects.all())
 	return JsonResponse(services_prices, safe=False)
 
 
