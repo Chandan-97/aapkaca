@@ -9,7 +9,6 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 @csrf_exempt
-@login_required
 def list_caservices(request):
 	services = CaService.objects.all()
 	services = list(services.values())
@@ -17,7 +16,6 @@ def list_caservices(request):
 
 
 @csrf_exempt
-@login_required
 def list_caservicesprice(request):
 	ca = request.user
 	services_prices = list(CaServicesPrice.objects.filter(ca=request.user))
