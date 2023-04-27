@@ -1,0 +1,213 @@
+.Home-Main {}
+
+a {
+    text-decoration: none;
+}
+
+.MT-16 {
+    margin-top: 1.6rem;
+}
+
+.Header {
+
+}
+
+.Header-logo {
+    color: #e43b3b;
+    font-weight: 700;
+    font-size: 1.5rem;
+
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    color: #e43b3b;
+    border: none;
+    background-color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e43b3b;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: white; color: red}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.login-signup {
+    font-size: 1.5rem;
+    color: #e43b3b;
+}
+
+.Header-button {
+    color: #e43b3b;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.right {
+    float: right;
+}
+
+.Header-menu {
+    margin-top: 0.7rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Header-menu-item {
+    font-size: 1rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+
+
+.Banner-container {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.Banner-title {
+    padding: 1rem;
+    font-weight: 500;
+    padding-bottom: 2rem;
+}
+
+.Banner-color-red-white {
+    background-color: #e43b3b;
+    color: #f3f0e8;
+}
+
+.Banner-color-white-red {
+    background-color: #f3f0e8;
+    color: #e43b3b;
+}
+
+.Banner-list{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f3f0e8;
+}
+
+.Banner-list-item {
+    font-size: 1.2rem;
+    color: #e43b3b;
+    padding: 0.6rem;
+    background-color: white;
+}
+
+.Banner-center-align {
+    text-align: center;
+}
+
+
+.Footer-title {
+    padding: 1rem;
+    font-weight: 500;
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.Footer-color-red-white {
+    background-color: #e43b3b;
+    color: #f3f0e8;
+}
+
+.Footer-logo-list {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Footer-logo-list-item {
+}
+
+.Footer-row-list {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.btn-color{
+    background-color: #0e1c36;
+    color: #fff;
+
+  }
+
+  .profile-image-pic{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+
+
+
+  .cardbody-color{
+    background-color: #e43b3b;
+  }
+
+  a{
+    text-decoration: none;
+    color: #f3f0e8;
+
+  }
+
+  #calogin{
+    color: #f3f0e8;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 15%;
+  }
+
+  .emailHelp {
+    color: white;
+  }
+
+  .emailHelp a {
+    color: white;
+  }
+
+  .text-danger12 {
+    color: blue;
+    font-size: 24px;
+  }
+
+.inputtile {
+   font-size: 18px;
+   margin-bottom: 0.80%;
+   color: white;
+  }
+
+
+.list-service {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+}

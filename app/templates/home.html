@@ -1,0 +1,120 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>aapkaCA</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css" />
+  </head>
+  <body>
+<!--  Header Starts-->
+    <div class='Home-Main'>
+        <div>
+            <a class='Header-logo' href="{% url 'frontend__home' %}">aapkaCA</a>
+
+            {% if request.user.is_authenticated %}
+               <span class='Header-button right dropdown login-signup'>
+                    <button class="dropdown">Welcome {{ request.user.full_name }}</button>
+                    <div class="dropdown-content">
+                   <a href="{% url 'frontend__ca_logout' %}">Logout</a>
+                    </div>
+                </span>
+            {% else %}
+                <span class='Header-button right dropdown login-signup'>
+                    <button class="dropdown">Login / Signup</button>
+                    <div class="dropdown-content">
+                   <a href="{% url 'frontend__ca_login' %}">CA</a>
+                   <a href="{% url 'frontend__user_login' %}">Customer</a>
+                    </div>
+                </span>
+            {% endif %}
+        </div>
+        <div class='Header-menu'>
+            <span class='Header-menu-item'>Home</span>
+            <span class='Header-menu-item'>About Us</span>
+            <span class='Header-menu-item'>CA Blogs</span>
+            <span class='Header-menu-item'>Trace CA Member</span>
+            <span class='Header-menu-item'>Need Help?</span>
+        </div>
+        <div class='Header-menu'>
+            <span class='Header-menu-item'>Search CA by location</span>
+            <span class='Header-menu-item'>Search CA by business need</span>
+            <span class='Header-menu-item'>Search CA by business stage</span>
+            <span class='Header-menu-item'>Search CA by business domain</span>
+        </div>
+        <div class='MT-16'></div>
+    </div>
+    <div class='MT-16' ></div>
+<!--  Header Ends -->
+
+<!--  Banner Starts-->
+
+        <div class='Banner-container'>
+            <div class='Banner-title Banner-color-red-white'>
+                <div class='Banner-center-align'>
+                    <span>India's Largest CA Professionals Network which helps to solve all your business needs related to finance and accounts quickly.</span>
+                </div>
+            </div>
+            <div class='Banner-list'>
+                <span class='Banner-list-item'>1000+CAs present on our platform</span>
+                <span class='Banner-list-item'>3000+ Happy Customers</span>
+                <span class='Banner-list-item'>30+ Business Services Available</span>
+            </div>
+            <div class='Banner-title Banner-color-red-white'>
+                <div class='Banner-center-align'>
+                    <span>Benefits for CAs on our platform -</span>
+                </div>
+                <br/>
+                <div class='Banner-title-list'>
+                    <div class='Banner-title-item'>Build your digital brand presence</div>
+                    <div class='Banner-title-item'>Get your micro website, share it with your prospects, and do conversions</div>
+                    <div class='Banner-title-item'>Write blogs and generate leads from them </div>
+                </div>
+            </div>
+            <div class='Banner-title Banner-color-white-red'>
+                <div class='Banner-center-align'>
+                    <span>Benefits for Users on our platform -</span>
+                </div>
+                <br/>
+                <div class='Banner-title-list'>
+                    <div class='Banner-title-item'>Search CAs according to your business stages such as Introduction, Growth, and Maturity</div>
+                    <div class='Banner-title-item'>Search CAs according to your business domain such as Manufacturing, Wholesale, Retail, Export/Import, and many more</div>
+                    <div class='Banner-title-item'>Whether you are a Startup/MSME, we have CAs according to your business need</div>
+                    <div class='Banner-title-item'>Whether you are looking to start business or want to grow business, we have CAs according to your business need</div>
+                    <div class='Banner-title-item'>Search CAs according to your business stages such as Introduction, Growth, and Maturity</div>
+                </div>
+            </div>
+        </div>
+
+
+<!--  Banner Ends-->
+
+<!-- Footer Starts-->
+        <div class='Footer-title Footer-color-red-white'>
+            <div class='Footer-heading'>Follow us on</div>
+<!--            {/* <div className='Footer-logo-list'>-->
+<!--                <a className='Footer-logo-list-item'><TwitterIcon fontSize='large'/></a>-->
+<!--                <a className='Footer-logo-list-item'><InstagramIcon fontSize='large'/></a>-->
+<!--                <a className='Footer-logo-list-item'><FacebookIcon fontSize='large'/></a>-->
+<!--                <a className='Footer-logo-list-item'><LinkedInIcon fontSize='large'/></a>-->
+<!--                <a className='Footer-logo-list-item'><YouTubeIcon fontSize='large'/></a>-->
+<!--            </div> */}-->
+            <div class='Footer-row-list'>
+                <span>About Us</span>
+                <span>Contact Us</span>
+                <span>Terms and Conditions</span>
+                <span>Privacy Policy</span>
+            </div>
+        </div>
+<!-- Footer Ends-->
+
+
+
+  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+</html>
