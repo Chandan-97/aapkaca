@@ -211,3 +211,13 @@ body {
     margin-bottom: -1px;
     background-color: #fff;
 }
+
+.bookmark-icon {
+    color: grey;
+    font-size: 1.2rem;
+}
+
+.bookmark-icon-red {
+    color: red;
+    font-size: 1.2rem;
+}

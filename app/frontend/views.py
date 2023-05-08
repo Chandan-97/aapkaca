@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -6,9 +7,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 
-from caservice.models import CaService
+from caservice.models import CaService, ServiceInterest
 from useraccounts.models import User, CAProfile, UserProfile
 
 
@@ -98,6 +100,7 @@ def ca_logout(request):
     return redirect("frontend__home")
 
 
+@csrf_exempt
 def user_login(request):
     if request.method == "GET":
         return render(request, 'user_login.html')
@@ -176,6 +179,11 @@ def authenticated_home(request):
 def services_list(request):
     services = CaService.objects.all()
     services = list(services.values())
+    serviceInterest = list()
+    try:
+        serviceInterest = list(ServiceInterest.objects.filter(user=request.user).values())
+    except Exception as e:
+        print(e)
 
     context = {
         "services": list()
@@ -183,11 +191,52 @@ def services_list(request):
     for s in services:
         obj = {
             "title": s["title"],
-            "features": s["features"]["list_show"]
+            "features": s["features"]["list_show"],
+            "id": s["id"],
+            "is_interested": False
         }
+
+        for si in serviceInterest:
+            if si["service_id"] == s["id"]:
+                obj["is_interested"] = True
+
         context["services"].append(obj)
 
     return render(request, 'user_services_list.html', context)
+
+
+def ca_dashboard(request):
+    services_interest = ServiceInterest.objects.all()
+    leads = list()
+    for si in services_interest:
+        try:
+            service = si.service
+            user = si.user
+            lead = {
+                "full_name": user.full_name,
+                "service": service.title,
+                "datetime": datetime.now().strftime("%B %d, %Y")
+            }
+            leads.append(lead)
+        except Exception as e:
+            print(e)
+    context = dict()
+    context["leads"] = leads
+
+    return render(request, 'ca_dashboard.html', context)
+
+
+@csrf_exempt
+def services_interest(request):
+    user = request.user
+    serviceId = json.loads(request.body)["serviceId"]
+
+    try:
+        ServiceInterest(user=user, service=CaService.objects.get(id=serviceId)).save()
+    except Exception as e:
+        print(e)
+
+    return HttpResponse("Intested")
 
 
 def test(request):

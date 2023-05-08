@@ -26,3 +26,12 @@ class CaServicesPrice(models.Model):
 
     def __str__(self):
         return str(self.service.title) + " -- " + str(self.ca.full_name)
+
+
+class ServiceInterest(models.Model):
+    service = models.ForeignKey(CaService, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ["service", "user"]
+        index_together = ["service", "user"]
