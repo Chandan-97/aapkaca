@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'useraccounts',
     'frontend',
     'caservice',
+    'search'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['old__templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

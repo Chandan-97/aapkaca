@@ -14,22 +14,27 @@
         <div>
             <a class='Header-logo' href="{% url 'frontend__home' %}">aapkaCA</a>
 
-            {% if request.user.is_authenticated %}
-               <span class='Header-button right dropdown login-signup'>
-                    <button class="dropdown">Welcome {{ request.user.full_name }}</button>
-                    <div class="dropdown-content">
-                   <a href="{% url 'frontend__ca_logout' %}">Logout</a>
-                    </div>
-                </span>
-            {% else %}
-                <span class='Header-button right dropdown login-signup'>
-                    <button class="dropdown">Login / Signup</button>
-                    <div class="dropdown-content">
-                   <a href="{% url 'frontend__ca_login' %}">CA</a>
-                   <a href="{% url 'frontend__user_login' %}">Customer</a>
-                    </div>
-                </span>
-            {% endif %}
+            <span class="search-bar center">
+                <input type="text" class="search-bar-input" aria-label="Service Name"> <button class="search-bar-button" type="button">Search</button>
+            </span>
+
+            <span class='Header-button right dropdown login-signup'>
+                <button class="dropdown">
+                    {% if request.user.is_authenticated %}
+                        Welcome {{ request.user.full_name }}
+                    {%else%}
+                        Login / Signup
+                    {%endif%}
+                </button>
+                <div class="dropdown-content">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'frontend__ca_logout' %}">Logout</a>
+                    {%else%}
+                        <a href="{% url 'frontend__ca_login' %}">CA</a>
+                        <a href="{% url 'frontend__user_login' %}">Customer</a>
+                    {%endif%}
+                </div>
+            </span>
         </div>
         <div class='Header-menu'>
             <span class='Header-menu-item'>Home</span>

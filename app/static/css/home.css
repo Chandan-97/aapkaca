@@ -66,6 +66,14 @@ a {
     float: right;
 }
 
+.search-bar{
+    max-width: 300px !important;
+}
+
+.center{
+    float: center;
+}
+
 .Header-menu {
     margin-top: 0.7rem;
     display: flex;

@@ -1,4 +1,6 @@
 from django.db import models
+
+from search.models import CaServiceSearch
 from useraccounts.models import User
 import jsonfield
 
@@ -26,6 +28,14 @@ class CaServicesPrice(models.Model):
 
     def __str__(self):
         return str(self.service.title) + " -- " + str(self.ca.full_name)
+
+    def save(self, *args, **kwargs):
+        super(CaServicesPrice, self).save(*args, **kwargs)
+
+        CaServiceSearch.objects.update_or_create(
+            search_string=self.service.name,
+            ca=self.ca
+        )
 
 
 class ServiceInterest(models.Model):
