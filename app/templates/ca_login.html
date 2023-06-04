@@ -1,1 +1,21 @@
 CA Login
+<br>
+<hr>
+<a href="{% url 'frontend__home' %}">aapkaCA</a>
+
+<!-- Dismissable Alert-->
+{% for message in messages %}
+<div>
+  <strong>Message: </strong> {{message}}
+  <button>Close</button>
+</div>
+{% endfor %}
+
+<form method="POST" action="{% url 'frontend__ca_login' %}">
+    {% csrf_token %}
+    <h2>CA Login</h2>
+    <input type="text" name="email" placeholder="email"/>
+    <input type="password" name="password"/>
+    <button type="submit">Login</button>
+</form>
+<div>Not Registered? <a href="{% url 'frontend__ca_register' %}"> Create an Account</a></div>

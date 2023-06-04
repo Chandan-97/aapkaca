@@ -1,1 +1,59 @@
-User register
+User Register
+<br>
+<hr>
+<a href="{% url 'frontend__home' %}">aapkaCA</a>
+
+<!-- Dismissable Alert-->
+{% for message in messages %}
+<div>
+  <strong>Message: </strong> {{message}}
+  <button>Close</button>
+</div>
+{% endfor %}
+
+<form method="POST" action="{% url 'frontend__user_register' %}" autoComplete="off" >
+    {% csrf_token %}
+    <h2>User Signup</h2>
+    <p>Full Name</p>
+    <input type="text" placeholder='Full Name' name="full_name"/>
+
+    <p>Phone No</p>
+    <input type="text" placeholder="Phone no" name="phone_no"/>
+
+    <p>Email</p>
+    <input type="email" placeholder='Email' name="email"/>
+
+    <p>Business Needs</p>
+    <textarea rows="4" placeholder="Business Needs" name="business_need"></textarea>
+
+
+    <p>Location Preference</p>
+    <select name="location_pref" multiple>
+        <option selected>Select Location</option>
+        <option value="DELHI_NCR">Delhi NCR</option>
+        <option value="BHOPAL">Bhopal</option>
+        <option value="INDORE">Indore</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="PUNJAB">Punjab</option>
+        <option value="RAJASTHAN">Rajasthan</option>
+    </select>
+
+    <p>Current Location</p>
+    <select name="location">
+        <option selected>Select Location</option>
+        <option value="DELHI_NCR">Delhi NCR</option>
+        <option value="BHOPAL">Bhopal</option>
+        <option value="INDORE">Indore</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="PUNJAB">Punjab</option>
+        <option value="RAJASTHAN">Rajasthan</option>
+    </select>
+
+    <p>Password</p>
+    <input type="password" placeholder="Password" name="password1"/>
+
+    <p>Confirm Password</p>
+    <input type="password" placeholder="Confirm password" name="password2"/>
+
+    <Button type="submit">Submit</Button>
+</form>
