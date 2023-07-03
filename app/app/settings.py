@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'useraccounts',
     'frontend',
     'caservice',
-    'search'
+    'search',
+    'services'
 ]
 
 MIDDLEWARE = [

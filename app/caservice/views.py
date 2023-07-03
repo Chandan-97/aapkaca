@@ -14,6 +14,21 @@ def list_caservices(request):
 	services = list(services.values())
 	return JsonResponse(services, safe=False)
 
+from .models import CaServicePriceV2
+from services.models import Services
+from useraccounts.models import User
+from django.forms.models import model_to_dict
+
+def list_caserevicesv2(request):
+	services = CaServicePriceV2.objects.all()
+	services = list(services.values())
+	for service in services:
+		service["service"] = model_to_dict(Services.objects.get(id=service["service_id"]), fields=["id", "title"])
+		service["ca"] = model_to_dict(User.objects.get(id=service["ca_id"]), fields=["id", "username", "email"])
+	context = dict()
+	context["services"] = services
+	return render(request, 'ca_services_list.html', context)
+
 
 @csrf_exempt
 def list_caservicesprice(request):

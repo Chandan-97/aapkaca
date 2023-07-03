@@ -1,0 +1,22 @@
+User Login
+<br>
+<hr>
+<a class='Header-logo' href="{% url 'frontend__home' %}">aapkaCA</a>
+
+<!-- Dismissable Alert-->
+{% for message in messages %}
+<div>
+  <strong>Message: </strong> {{message}}
+  <button>Close</button>
+</div>
+{% endfor %}
+
+<!--  Login Form Starts-->
+<form method="POST" action="{% url 'frontend__ca_login' %}">
+    {% csrf_token %}
+    <h2>User Login</h2>
+    <input type="text" name="email" placeholder="email"/>
+    <input type="password" name="password"/>
+    <button type="submit">Login</button>
+</form>
+<div>Not Registered? <a href="{% url 'frontend__user_register' %}"> Create an Account</a></div>

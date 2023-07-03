@@ -21,6 +21,7 @@ urlpatterns = [
     path('accounts/', include('useraccounts.urls')),
     path('location/', include('location.urls')),
     path('degree/', include('degree.urls')),
+    path('services/', include('services.urls')),
     path('caservice/', include('caservice.urls')),
     path('search/', include('search.urls')),
     path('', include('frontend.urls')),

@@ -45,3 +45,14 @@ class ServiceInterest(models.Model):
     class Meta:
         unique_together = ["service", "user"]
         index_together = ["service", "user"]
+
+
+from services.models import Services
+
+class CaServicePriceV2(models.Model):
+    service = models.ForeignKey(Services, on_delete=models.CASCADE)
+    ca = models.ForeignKey(User, on_delete=models.CASCADE)
+    price = models.IntegerField()
+
+    def __str__(self):
+        return str(self.service.title) + " -- " + str(self.ca.full_name) + " -- " + str(self.price)
