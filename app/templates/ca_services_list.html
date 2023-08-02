@@ -66,6 +66,29 @@
 <!--  Services List Starts-->
 <h1 class='text-center ourservice'>Manage Services</h1>
 
+<script typescripttype="text/javascript">  
+    var service_prices = []
+    function store_service_price(services){
+        for(let service of services ){
+            service_prices.append(service)
+        }
+
+        console.log(service_prices)
+    }
+    function service_price_reset(service_id){
+        console.log("resetting .... ", service_id)
+    }
+
+    function service_price_update(service_id){
+        console.log("updating .... ", service_id)
+    }
+
+    function service_delete(service_id){
+        console.log("deleting .... ", service_id)
+    }
+</script>  
+
+store_service_price(services)
 <ul class="list-group">
     {% for service in services %}
         <li class="list-group-item">
